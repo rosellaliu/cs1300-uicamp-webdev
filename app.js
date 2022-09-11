@@ -14,9 +14,7 @@ const apiRequest = async () => {
       'Content-Type': 'application/json',
     }
   });
-
-  // console.log(response);
-
+  console.log(response);
   // Return the response in JSON format
   return response.json();
 }
@@ -26,15 +24,24 @@ const updatePage = async () => {
 
   // Make API request and get an array of fruit objects
   const fruitsArray = await apiRequest();
-  // console.log(fruitsArray);
+  console.log(fruitsArray);
 
   // TODO: Use either `map` and/or `filter` to extract some data from the array of fruit objects
   // For example, find "name of all fruits whose sugar > 15",
-
+  const filteredArray = fruitsArray.filter((item) => {
+    return item.nutritions.sugar> 15; 
+  })
+  console.log(filteredArray)
   // TODO: Create a new HTML element to display your data
 
+  const newElement = document.createElement('div');
+  newElement.innerHTML = "";
+  for (let i = 0; i < filteredArray.length; i ++){
+    newElement.innerHTML += filteredArray[i].name + "<br>";
+  }
   // TODO: Append your new element to the page
-
+  const existingElement = document.getElementById('subtitle');
+  existingElement.append(newElement);
 }
 
 // SAMPLE CODE of how to create and append a new HTML element to the page
@@ -42,7 +49,6 @@ const exampleAddElement = () => {
   // Create a new HTML element and set its properties
   const newElement = document.createElement('div');
   newElement.innerHTML = "this text is inside a div";
-
   // Append the new element to an existing part of the webpage
   const existingElement = document.getElementById('example-id');
   existingElement.append(newElement);

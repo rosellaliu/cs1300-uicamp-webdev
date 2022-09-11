@@ -1,14 +1,24 @@
 #cs1300-gallery {
-  background-color: lightblue;
+  background-color: white;
 }
 
 /* Uncomment below if images are way too big.
 Selects all image tags and makes them 500px;
  */
-/*img {*/
-/*  width: 500px;*/
-/*}*/
+img {
+   width: 500px;
+  }
+
+#cs1300-gallery-item{
+  text-align: center;
+}
 
 .gallery-container {
   /* TODO add styles (hint: use flex!) https://www.w3schools.com/cssref/ */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
 }
